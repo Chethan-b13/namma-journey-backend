@@ -8,7 +8,7 @@ import { morganMiddleware } from './api/middlewares/loggerMiddleware';
 import { errorHandlingMiddleware } from './api/middlewares/errorHandlingMiddleware';
 
 dotenv.config();
-// connectDB();
+connectDB();
 
 const app = express();
 app.use(express.json());
