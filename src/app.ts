@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import connectDB from './config/db';
 import { morganMiddleware } from './api/middlewares/loggerMiddleware';
 import { errorHandlingMiddleware } from './api/middlewares/errorHandlingMiddleware';
+import authRoutes from './api/routes/authRoutes';
 
 dotenv.config();
 connectDB();
@@ -17,8 +18,7 @@ app.use(morganMiddleware);
 app.use(helmet());
 
 // Routes
-// app.use("/api/auth", authRoutes);
-
+app.use('/api/auth', authRoutes);
 app.use(errorHandlingMiddleware);
 
 export default app;
