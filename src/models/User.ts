@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import BaseModel from './BaseModel';
+import { USER_ROLES, VALID_USER_ROLES } from './constants';
 
 const UserSchema = new mongoose.Schema({
   firstName: { type: String, required: true },
@@ -17,8 +18,8 @@ const UserSchema = new mongoose.Schema({
   profilePic: { type: String },
   role: {
     type: [String],
-    enum: ['admin', 'agency', 'travel partner', 'traveler'],
-    default: ['traveler'],
+    enum: VALID_USER_ROLES,
+    default: [USER_ROLES.TRAVELER],
   },
   refreshToken: { type: String }, // Optional: Store refresh token if using Firebase Auth with custom JWT handling
   lastLogin: { type: Date },
